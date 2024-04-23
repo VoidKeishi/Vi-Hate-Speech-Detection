@@ -42,6 +42,7 @@
 - Data encoding
     + One-hot encoding
     + Label encoding
+    + Byte-level byte pair encoding
     + Word embedding
     + Sentence embedding
 ## Model
