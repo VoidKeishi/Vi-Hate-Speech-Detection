@@ -1,50 +1,47 @@
 # Problem description
-- Bài toán: phân loại câu văn là toxic hay không toxic
-- Input: câu văn
-- Output: toxic hay không toxic
+- Problem: Classify whether a sentence is toxic or non-toxic
+- Input: Sentence
+- Output: Toxic or non-toxic
 # Dataset
 ## [ViCTSD](https://github.com/tarudesu/ViCTSD)
 ### Description 
 - 10000 examples
-- 5 trường: Comment, Constructiveness, Toxicity, Title, Topic
-    + Comment: câu văn
+- 5 columns: Comment, Constructiveness, Toxicity, Title, Topic
     + Constructiveness: 0 (non-constructive), 1 (constructive)
     + Toxicity: 0 (non-toxic), 1 (toxic)
-    + Title: tiêu đề bài viết
-    + Topic: chủ đề bài viết
 ### Distribution
 ## [ViHSD](https://github.com/sonlam1102/vihsd)
 ### Description
 - 33400 examples
-- 2 trường: Comment, Label
-    + Comment: câu văn
+- 2 columns: Comment, Label
     + Label: 0 (clean), 1 (offensive), 2 (hate)
 ### Distribution    
 # Pipeline
 ## Data explore
 - Data distribution
-    + Số lượng câu văn toxic và không toxic
-    + Số lượng câu văn theo chủ đề
-    + Độ dài câu văn
-    + Tần suất xuất hiện của từng từ
-    + Named entity recognition
+    + Number of toxic and non-toxic sentences
+    + Sentence length
 - Data visualization
     + Word cloud
     + Histogram
     + Pie chart
-    + Heatmap
 ## Preprocessing
 - Data cleaning
-- Data augmentation
-- Data balancing
-- Data splitting
-- Tokenization
+    + Remove nulls, duplicates, #ERROR
+    + Lower casing
+    + Removal of URLs
+    + Removal of Punctuations
+    + Removal of Stopwords
+    + Conversion of emojis to words
+- Data augmentation (Experimental)
+- Tokenization: underthesea, vncorenlp, pyvi
 - Data encoding
-    + One-hot encoding
-    + Label encoding
-    + Byte-level byte pair encoding
-    + Word embedding
-    + Sentence embedding
+    + One-hot encoding (not recommended)
+    + Count vectorization
+    + TF-IDF
+    + Word embedding (Word2Vec, FastText, GloVe)
+    + Byte-level byte pair encoding 
+    + Sentence embedding (Doc2Vec, BERT)
 ## Model
 - Machine learning
     + Logistic regression
@@ -62,9 +59,9 @@
     + Bert
 ## Evaluation & Refinement
 - Metrics: Accuracy, F1 score
-- Phân tích các case sai để cải thiện model
-- Thay đổi các option trong bước preprocessing
-- Thay đổi model
+- Analyze incorrect cases to improve the model
+- Change options in the preprocessing step
+- Change the model
 ## Deployment
-- Dùng Flask để tạo API
-- Dùng Streamlit để tạo web app demo nhanh
+- Use Flask to create an API
+- Use Streamlit to quickly create a web app demo
