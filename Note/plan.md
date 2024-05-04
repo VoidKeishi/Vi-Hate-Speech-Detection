@@ -65,3 +65,8 @@
 ## Deployment
 - Use Flask to create an API
 - Use Streamlit to quickly create a web app demo
+# Guideline
+- Use separate notebooks for each step
+- For each model, create 3 version testing on vihsd, victsd, and merged dataset
+- Use the same preprocessing steps for all models
+- Use the same evaluation metrics for all models
