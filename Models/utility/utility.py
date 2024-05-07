@@ -27,7 +27,7 @@ def preprocess_data(
     emoji=False
 ):
     # Load stopwords
-    with open('./preprocess/Stopwords/vietnamese-stopwords.txt', 'r', encoding='utf-8') as f:
+    with open('./utility/Stopwords/vietnamese-stopwords.txt', 'r', encoding='utf-8') as f:
         stopwords = f.read().splitlines()
     # Function to remove stopwords
     def remove_stopwords(text):
