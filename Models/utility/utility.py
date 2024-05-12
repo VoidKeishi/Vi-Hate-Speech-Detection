@@ -2,6 +2,7 @@ import pandas as pd  # type: ignore
 import string
 import emoji_vietnamese  # type: ignore
 
+
 def load_data(dataset='vihsd'):
     if dataset == 'vihsd':
         train = pd.read_csv('../Dataset_Reformat/train_vihsd.csv')
@@ -17,6 +18,20 @@ def load_data(dataset='vihsd'):
         test = pd.read_csv('../Dataset_Reformat/test_merged.csv')
     return train, dev, test
 
+def load_data(set_name, dataset='vihsd'):
+    valid_sets = ['train', 'dev', 'test']
+    if set_name not in valid_sets:
+        raise ValueError(f"Invalid set_name. Expected one of: {valid_sets}")
+
+    if dataset == 'vihsd':
+        data = pd.read_csv(f'../Dataset_Reformat/{set_name}_vihsd.csv')
+    elif dataset == 'victsd':
+        data = pd.read_csv(f'../Dataset_Reformat/{set_name}_victsd.csv')
+    elif dataset == 'merged':
+        data = pd.read_csv(f'../Dataset_Reformat/{set_name}_merged.csv')
+
+    return data
+
 
 def preprocess_data(
     data,
@@ -30,6 +45,7 @@ def preprocess_data(
     with open('./utility/Stopwords/vietnamese-stopwords.txt', 'r', encoding='utf-8') as f:
         stopwords = f.read().splitlines()
     # Function to remove stopwords
+
     def remove_stopwords(text):
         words = text.split()
         words = [word for word in words if word not in stopwords]
